@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from app.db.database import database
 
 app = FastAPI(title="ModelDock API")
 
@@ -16,5 +17,10 @@ app.add_middleware(
 )
 
 @app.get("/")
-def root():
+async def root():
     return {"message": "ModelDock backend running"}
+
+@app.get("/test-db")
+async def test_db():
+    collections = await database.list_collection_names()
+    return {"collections": collections}
