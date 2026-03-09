@@ -8,3 +8,4 @@ database = client["modeldock_db"]
 
 users_collection = database["users"]
 projects_collection = database["projects"]
+datasets_collection = database["datasets"]
